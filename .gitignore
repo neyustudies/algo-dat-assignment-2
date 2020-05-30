@@ -76,7 +76,6 @@ build
 cmake_out
 
 node_modules/
-.vscode/
 settings.json
 secretnotes.md
 imports/lib/
@@ -84,9 +83,5 @@ public/fonts/
 .history/
 
 .vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
 *.code-workspace
 *.plist
