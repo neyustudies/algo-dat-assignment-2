@@ -122,24 +122,26 @@ int main(int argc, char *argv[]) {
     std::cin  >> option;
     std::cout << "\nOption " << option << " selected: ";
 
+	  
   switch(option) {
 
-		case 1: 
-			std::cout << "Enter the keys to be inserted - separated by spaces.. " << 
-      "\nTo terminate the input, press any alphabet & [Enter].." << std::endl;	
-			while(std::cin >> input) {
-				bst.insert(input);
-			}	std::cin.clear();
-				std::cin.ignore(1);
-				break;
+    case 1: 
+      std::cout << "Enter the keys to be inserted - separated by spaces.. " 
+	        << "\nTo terminate the input, press any alphabet & [Enter].." 
+	        << std::endl;	
+      while(std::cin >> input) {
+	bst.insert(input);
+      }	std::cin.clear();
+	std::cin.ignore(1);
+	break;
 
-		case 2:
-			std::cout << "Which node do you want to remove?" << std::endl;
-			std::cin  >> removed;
-			bst.remove(removed);
-			std::cout << "The node with the value of " << removed 
-                << " has been removed from the tree..\n";
-			break;
+    case 2:
+	std::cout << "Which node do you want to remove?" << std::endl;
+	std::cin  >> removed;
+	bst.remove(removed);
+	std::cout << "The node with the value of " << removed 
+                  << " has been removed from the tree..\n";
+	break;
         
     case 3:
       std::cout << "Which node do you want to search?" << std::endl;
@@ -147,7 +149,7 @@ int main(int argc, char *argv[]) {
       std::cout << "The pointer to " << bst.search(searched)->key 
                 << " has been found.. its address is " 
                 << bst.search(searched) << std::endl;
-        break;
+      break;
 
     case 4:
       std::cout << "Whose predecessor are you looking for?" << std::endl;
@@ -163,14 +165,14 @@ int main(int argc, char *argv[]) {
                 << bst.getSuccessor(succ)->key << std::endl;
       break;
 
-		case 6:
+    case 6:
       std::cout << "Goodbye! Exiting the program" << std::endl;
       std::cout << "Please also take a look at the tests" << std::endl;
 
-		default:
-			quit = true;
+    default:
+      quit = true;
       return Catch::Session().run(argc, argv);
-		}
-	}
+   }
+  }
   return 0;
 }
