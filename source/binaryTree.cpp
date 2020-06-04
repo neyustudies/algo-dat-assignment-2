@@ -204,3 +204,26 @@ void BinaryTree::printTree(BinaryTree* p) {
 			printTree(node->right);
 }
 
+
+// M A X I M U M
+
+/* returns the rightmost in the Tree */
+int BinaryTree::getMax() {
+  BinaryTree* node = this->search(key);
+  assert(node != NULL);
+  while(node->right != NULL) {
+    node = node->right;
+  } return node->key;
+}
+
+
+// M I N I M U M
+
+/* returns the leftmost in the Tree */
+int BinaryTree::getMin() {
+  BinaryTree* node = this->search(key);
+  assert(node != NULL);
+  while(node->left != NULL) {
+    node = node->left;
+  } return node->key;
+}
