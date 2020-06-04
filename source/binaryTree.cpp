@@ -227,3 +227,4 @@ int BinaryTree::getMin() {
     node = node->left;
   } return node->key;
 }
+
