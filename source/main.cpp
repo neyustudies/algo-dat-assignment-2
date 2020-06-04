@@ -106,6 +106,24 @@ TEST_CASE("search a node", "[search]") {
   REQUIRE(tree.search(7) == tree.right->right->right);
 } 
 
+TEST_CASE("find the rightmost key", "[max]") {
+  BinaryTree tree1({3, 2, 1, 4, 6, 5, 7});
+  BinaryTree tree2({6, 2, 4, 8, 1, 5, 3});
+  REQUIRE(tree1.getMax() == 7);
+  REQUIRE(tree1.getMax() == tree1.right->right->right->key);
+  REQUIRE(tree2.getMax() == 8);
+  REQUIRE(tree2.getMax() == tree2.right->key);
+} 
+
+TEST_CASE("find the leftmost key", "[minimum]") {
+  BinaryTree tree1({3, 2, 1, 4, 6, 5, 7});
+  BinaryTree tree2({9, 2, 4, 8, 1, 5, 3});
+  REQUIRE(tree1.getMin() == 1);
+  REQUIRE(tree1.getMin() == tree1.left->left->key);
+  REQUIRE(tree2.getMin() == 1);
+  REQUIRE(tree2.getMin() == tree2.left->left->key);
+}
+
 
 /*--------- M A I N ------------------------------------------------------------------------*/
 
@@ -118,7 +136,7 @@ int main(int argc, char *argv[]) {
 
   while(!quit) {
     std::cout << "\nSelect an action: \n" << 
-    "1. insert, 2. remove, 3. search, 4. predecessor, 5. successor, 6. quit\n";
+    "1. insert, 2. remove, 3. search, 4. predecessor, 5. successor, 6. max, 7. min, 8. quit\n";
     std::cin  >> option;
     std::cout << "\nOption " << option << " selected: ";
 
@@ -130,18 +148,18 @@ int main(int argc, char *argv[]) {
 	        << "\nTo terminate the input, press any alphabet & [Enter].." 
 	        << std::endl;	
       while(std::cin >> input) {
-	bst.insert(input);
+	    bst.insert(input);
       }	std::cin.clear();
-	std::cin.ignore(1);
-	break;
+	      std::cin.ignore(1);
+	      break;
 
     case 2:
-	std::cout << "Which node do you want to remove?" << std::endl;
-	std::cin  >> removed;
-	bst.remove(removed);
-	std::cout << "The node with the value of " << removed 
+	    std::cout << "Which node do you want to remove?" << std::endl;
+	    std::cin  >> removed;
+	    bst.remove(removed);
+	    std::cout << "The node with the value of " << removed 
                   << " has been removed from the tree..\n";
-	break;
+	    break;
         
     case 3:
       std::cout << "Which node do you want to search?" << std::endl;
@@ -166,6 +184,16 @@ int main(int argc, char *argv[]) {
       break;
 
     case 6:
+      std::cout << "Searching for the rightmost key..." << std::endl;
+      std::cout << bst.getMax() << " is the maximum key" << std::endl;
+      break;
+
+    case 7:
+      std::cout << "Searching for the leftmost key..." << std::endl;
+      std::cout << bst.getMin() << " is the minimum key" << std::endl;
+      break;
+
+    case 8:
       std::cout << "Goodbye! Exiting the program" << std::endl;
       std::cout << "Please also take a look at the tests" << std::endl;
 
