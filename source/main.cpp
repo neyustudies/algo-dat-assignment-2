@@ -113,13 +113,12 @@ TEST_CASE("search a node", "[search]") {
 int main(int argc, char *argv[]) {
 
   BinaryTree bst(0);
-	bool quit = false;
+  bool quit = false;
   int searched, removed, input, pred, succ, option;
 
-
   while(!quit) {
-		std::cout << "\nSelect an action: \n" 
-              << "1. insert, 2. remove, 3. search, 4. predecessor, 5. successor, 6. quit\n";
+    std::cout << "\nSelect an action: \n" << 
+    "1. insert, 2. remove, 3. search, 4. predecessor, 5. successor, 6. quit\n";
 		std::cin  >> option;
 		std::cout << "\nOption " << option << " selected: ";
 
@@ -127,9 +126,8 @@ int main(int argc, char *argv[]) {
 		switch(option) {
 
 			case 1: 
-				std::cout << "Enter the keys to be inserted - separated by spaces.. " 
-                  << "\nTo terminate the input, press any alphabet & [Enter].." 
-                  << std::endl;	
+				std::cout << "Enter the keys to be inserted - separated by spaces.. " << 
+        "\nTo terminate the input, press any alphabet & [Enter].." << std::endl;	
 				while(std::cin >> input) {
 					bst.insert(input);
 				}	std::cin.clear();
