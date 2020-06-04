@@ -13,9 +13,13 @@ class BinaryTree {
     BinaryTree* search(int key);
     BinaryTree* getPredecessor(int key);
     BinaryTree* getSuccessor(int key);
+    int getMax();
+    int getMin();
     void insert(int key);
     void remove(int key);
     void printTree(BinaryTree* p);
+    void maximum(BinaryTree* p);
+    void minimum(BinaryTree* p);
 
 };
 
