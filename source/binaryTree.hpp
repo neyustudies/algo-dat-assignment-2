@@ -18,8 +18,6 @@ class BinaryTree {
     void insert(int key);
     void remove(int key);
     void printTree(BinaryTree* p);
-    void maximum(BinaryTree* p);
-    void minimum(BinaryTree* p);
 
 };
 
