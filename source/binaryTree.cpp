@@ -66,8 +66,8 @@ void BinaryTree::remove(int key) {
     if(p) {
       if(node->left && node->right) {
         // replaces successor
-        BinaryTree *successor = node->getSuccessor(node->key);
-        BinaryTree *successorParent = successor->p;
+        BinaryTree* successor = node->getSuccessor(node->key);
+        BinaryTree* successorParent = successor->p;
         // removes successor node
         if(successorParent) {
           if(successorParent->left == successor) {
@@ -149,13 +149,13 @@ BinaryTree* BinaryTree::getPredecessor(int key) {
   if (!node) {
     throw std::invalid_argument("Error! this key does not exist");
     return NULL;
-  } if (node->left) {
+  } if (node->left != NULL) {
     node = node->left;
     while (node->right) {
       node = node->right;
     } return node;
   } else {
-      while (node->p) {
+      while (node->p != NULL) {
         if (node->p->key < node->key) {
         return node->p;
         } node = node->p;
@@ -173,13 +173,13 @@ BinaryTree* BinaryTree::getSuccessor(int key) {
   if (!node) {
     throw std::invalid_argument("Error! this key does not exist");
     return NULL;
-  } if (node->right) {
+  } if (node->right != NULL) {
     node = node->right;
       while (node->left) {
       node = node->left;
       } return node;
     } else {
-        while (node->p) {
+        while (node->p != NULL) {
           if (node->p->key > node->key) {
             return node->p;
           } node = node->p;
