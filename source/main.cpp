@@ -116,12 +116,12 @@ TEST_CASE("find the rightmost key", "[max]") {
 } 
 
 TEST_CASE("find the leftmost key", "[minimum]") {
-  BinaryTree tree1({3, 2, 1, 4, 6, 5, 7});
-  BinaryTree tree2({9, 2, 4, 8, 1, 5, 3});
-  REQUIRE(tree1.getMin() == 1);
-  REQUIRE(tree1.getMin() == tree1.left->left->key);
-  REQUIRE(tree2.getMin() == 1);
-  REQUIRE(tree2.getMin() == tree2.left->left->key);
+  BinaryTree tree1({3, 5, 9, 4, 6, 2, 7});
+  BinaryTree tree2({9, 6, 4, 8, 7, 5, 3});
+  REQUIRE(tree1.getMin() == 2);
+  REQUIRE(tree1.getMin() == tree1.left->key);
+  REQUIRE(tree2.getMin() == 3);
+  REQUIRE(tree2.getMin() == tree2.left->key);
 }
 
 
@@ -146,7 +146,7 @@ int main(int argc, char *argv[]) {
     case 1: 
 		  
       		std::cout << "Enter the keys to be inserted - separated by spaces.. " 
-	        << "\nTo terminate the input, press any alphabet & [Enter].." 
+	        << "\nTo terminate the input, press any alphabet [Enter]" 
 	        << std::endl;	
       		while(std::cin >> input) {
       		  bst.insert(input);
