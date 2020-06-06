@@ -8,7 +8,7 @@ struct Node {
   int     key;      // node value
   Node*   parent;   // parent pointer
   Node*   left;     // left child pointer
-  Node*   right;    // left child pointer
+  Node*   right;    // right child pointer
   
 
   /* constructors for struct Node */
