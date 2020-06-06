@@ -53,7 +53,7 @@ BinarySearchTree::BinarySearchTree(int keys[], int arrSize) :
 
 
 
-/*---  B A S I C   O P E R A T I O N S  ------------------------------------*/
+/*------  B A S I C   O P E R A T I O N S  -------------------------------------------*/
  
 
 /* adding a new Node into the Tree */
@@ -170,7 +170,7 @@ void BinarySearchTree::find(int key) {
 
 
 
-/*---  I N T E R N   O P E R A T I O N S  ---------------------------------*/
+/*------  I N T E R N   O P E R A T I O N S  --------------------------------------------------*/
 
 
 Node* BinarySearchTree::search(int key) {
