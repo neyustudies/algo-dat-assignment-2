@@ -98,13 +98,26 @@ int BinarySearchTree::remove(int key) {
 }
 
 
-
+int BinarySearchTree::successor(int key) {
+  Node* pos = this->search(key);
+  if(pos == nullptr) {
+    std::cout << "not found" << std::endl;
+    return 1;
+  } Node* successorNode = this->successor(pos);
+  if(successorNode != nullptr) {
+    std::cout << "Successor to node " << key << " is " << successorNode->key << std::endl;
+  } else {
+    std::cout << key << " has no successor, it is the maximum key" << std::endl;
+    return key;
+  }
+}
 
 
 
 
 
 /*---  I N T E R N   O P E R A T I O N S  ---------------------------*/
+
 
 Node* BinarySearchTree::search(int key) {
   Node* tmp = root_;
@@ -122,6 +135,16 @@ Node* BinarySearchTree::search(int key) {
   } else {
     return nullptr;
   }
+}
+
+Node* BinarySearchTree::successor(Node* node) {
+  if(node->right != nullptr) {
+    return min(node->right);
+  } Node* parentNode = node->parent;
+  while(parentNode != nullptr and parentNode->right == node) {
+    node = parentNode;
+    parentNode = parentNode->parent;
+  } return parentNode;
 }
 
 
