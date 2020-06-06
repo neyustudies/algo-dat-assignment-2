@@ -73,9 +73,28 @@ int BinarySearchTree::insert(int key) {
         std::cout << key << " is already existing" << std::endl;
         return 1;
       }
+    } if(key < prev->key) {
+      Node* newNode   = new Node(key);
+      prev->left      = newNode;
+      newNode->parent = prev;
+    } else if(key > prev->key) {
+      Node* newNode   = new Node(key);
+      prev->right     = newNode;
+      newNode->parent = prev;
     }
-    
-  }
+  } ++size_;
+  return 0;
+} 
+
+
+int BinarySearchTree::remove(int key) {
+  Node* node = this->search(key);
+  if(node == nullptr) {
+    std::cout << "not found" << std::endl;
+    return 1;
+  } this->remove(node);
+  std::cout << "Node " << key << " has been removed" << std::endl;
+  return key;
 }
 
 
@@ -85,8 +104,25 @@ int BinarySearchTree::insert(int key) {
 
 
 
+/*---  I N T E R N   O P E R A T I O N S  ---------------------------*/
 
-
+Node* BinarySearchTree::search(int key) {
+  Node* tmp = root_;
+  bool found = false;
+  while(tmp != nullptr and found == false) {
+    if(tmp->key == key) {
+      found = true;
+    } else if(tmp->key > key) {
+      tmp = tmp->left;
+    } else {
+      tmp = tmp-> right;
+    }
+  } if(found == true) {
+    return tmp;
+  } else {
+    return nullptr;
+  }
+}
 
 
 
