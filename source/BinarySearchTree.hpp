@@ -113,6 +113,29 @@ int BinarySearchTree::successor(int key) {
 }
 
 
+int BinarySearchTree::predecessor(int key) {
+  Node* pos = this->search(key);
+  if(pos == nullptr) {
+    std::cout << "not found" << std::endl;
+    return 1;
+  } Node* predecessorNode = this->predecessor(pos);
+  if(predecessorNode != nullptr) {
+    std::cout << "Predecessor to node " << key << " is " << predecessorNode->key << std::endl;
+    return key;
+  }
+}
+
+
+void BinarySearchTree::max() {
+  Node* max = this->max(root_);
+  std::cout << max->key << " is the maximum key" << std::endl;
+}
+
+
+void BinarySearchTree::min() {
+  Node* min = this->min(root_);
+  std::cout << min->key << " is the minimum key" << std::endl;
+}
 
 
 
@@ -142,12 +165,35 @@ Node* BinarySearchTree::successor(Node* node) {
     return min(node->right);
   } Node* parentNode = node->parent;
   while(parentNode != nullptr and parentNode->right == node) {
-    node = parentNode;
+    node       = parentNode;
     parentNode = parentNode->parent;
   } return parentNode;
 }
 
 
+Node* BinarySearchTree::predecessor(Node* node) {
+  if(node->left != nullptr) {
+    return max(node->left);
+  } Node* parentNode = node->parent;
+  while(parentNode != nullptr and parentNode->left == node) {
+    node       = parentNode;
+    parentNode = parentNode->parent;
+  } return parentNode;
+}
+
+
+Node* BinarySearchTree::max(Node* node) {
+  while(node->right != nullptr) {
+    node = node->right;
+  } return node;
+}
+
+
+Node* BinarySearchTree::min(Node* node) {
+  while(node->left != nullptr) {
+    node = node->left;
+  } return node;
+}
 
 
 
