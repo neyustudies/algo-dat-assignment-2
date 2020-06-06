@@ -11,10 +11,9 @@ class BinarySearchTree {
     BinarySearchTree    (int keys[], int arrSize);
 
     int   insert        (int key);
-    void   remove       (int key);
+    void  remove        (int key);
     int   successor     (int key);
     int   predecessor   (int key);
-    //int   getSize       (int key);
     void  find          (int key);
     int   size          ();
     void  max           ();
@@ -32,7 +31,6 @@ class BinarySearchTree {
     Node*   max         (Node* node);
     Node*   min         (Node* node);
     int     remove      (Node* node);
-    //int     getSize     (Node* node);
     void    print       (Node* node);
     
 };
