@@ -53,9 +53,10 @@ BinarySearchTree::BinarySearchTree(int keys[], int arrSize) :
 
 
 
-/*---  B A S I C   O P E R A T I O N S  ---------------------------*/
+/*---  B A S I C   O P E R A T I O N S  ------------------------------------*/
+ 
 
-
+/* adding a new Node into the Tree */
 int BinarySearchTree::insert(int key) {
   if(root_ == nullptr) {
     root_ = new Node(key);
@@ -86,7 +87,7 @@ int BinarySearchTree::insert(int key) {
   return 0;
 } 
 
-
+/* delete a node from the Tree */
 int BinarySearchTree::remove(int key) {
   Node* node = this->search(key);
   if(node == nullptr) {
@@ -97,7 +98,7 @@ int BinarySearchTree::remove(int key) {
   return key;
 }
 
-
+/* return the node with the minimum bigger key in the Tree */
 int BinarySearchTree::successor(int key) {
   Node* pos = this->search(key);
   if(pos == nullptr) {
@@ -105,14 +106,15 @@ int BinarySearchTree::successor(int key) {
     return 1;
   } Node* successorNode = this->successor(pos);
   if(successorNode != nullptr) {
-    std::cout << "Successor to node " << key << " is " << successorNode->key << std::endl;
+    std::cout << "Successor to node " << key << " is " 
+              << successorNode->key << std::endl;
   } else {
     std::cout << key << " has no successor, it is the maximum key" << std::endl;
     return key;
   }
 }
 
-
+/* return the node with the maximum smaller key in the Tree */
 int BinarySearchTree::predecessor(int key) {
   Node* pos = this->search(key);
   if(pos == nullptr) {
@@ -120,8 +122,10 @@ int BinarySearchTree::predecessor(int key) {
     return 1;
   } Node* predecessorNode = this->predecessor(pos);
   if(predecessorNode != nullptr) {
-    std::cout << "Predecessor to node " << key << " is " << predecessorNode->key << std::endl;
-    return key;
+    std::cout << "Predecessor to node " << key << " is " 
+              << predecessorNode->key << std::endl;
+  } else {
+    std::cout << key << " has no predecessor, it is the minimum key" << std::endl;
   }
 }
 
@@ -139,7 +143,7 @@ void BinarySearchTree::min() {
 
 
 
-/*---  I N T E R N   O P E R A T I O N S  ---------------------------*/
+/*---  I N T E R N   O P E R A T I O N S  ---------------------------------*/
 
 
 Node* BinarySearchTree::search(int key) {
