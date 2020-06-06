@@ -20,13 +20,14 @@ struct Node {
     parent    = nullptr;
 
   }
-
+  
   Node(int key) {
 
     this->key = key;
     left      = nullptr;
     right     = nullptr;
     parent    = nullptr;
+
   }
 
 };
