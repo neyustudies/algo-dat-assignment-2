@@ -5,20 +5,24 @@
 
 struct Node {
 
-  int   key;      // node value
-  Node* parent;   // parent pointer
-  Node* left;     // left child pointer
-  Node* right;    // left child pointer
+  int     key;      // node value
+  Node*   parent;   // parent pointer
+  Node*   left;     // left child pointer
+  Node*   right;    // left child pointer
+  
 
   /* constructors for struct Node */
 
   Node() {
-    left    = nullptr;
-    right   = nullptr;
-    parent  = nullptr;
+
+    left      = nullptr;
+    right     = nullptr;
+    parent    = nullptr;
+
   }
 
   Node(int key) {
+
     this->key = key;
     left      = nullptr;
     right     = nullptr;
