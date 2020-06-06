@@ -37,12 +37,10 @@ int main() {
                   std::cout << "\n";
                   break;
 
-
       case 3:     std::cout << "Printing the tree in in-order\n";
                   BST.print();
                   std::cout << "\n";
                   break;
-
 
       case 4:     std::cout << "Which node do you want to search?\n";
                   std::cin  >> searched;
