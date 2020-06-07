@@ -56,7 +56,7 @@ BinarySearchTree::BinarySearchTree(int keys[], int arrSize) :
 /*------  B A S I C   O P E R A T I O N S  -------------------------------------------*/
  
 
-/* adding a new Node into the Tree */
+/* adding a new node into the Tree */
 int BinarySearchTree::insert(int key) {
   if(root_ == nullptr) {
     root_ = new Node(key);
@@ -98,7 +98,7 @@ void BinarySearchTree::remove(int key) {
 }
 
 
-/* return the node with the minimum bigger key in the Tree */
+/* return the key with the minimum bigger value in the Tree */
 int BinarySearchTree::successor(int key) {
   Node* pos = this->search(key);
   if(pos == nullptr) {
@@ -115,7 +115,7 @@ int BinarySearchTree::successor(int key) {
 }
 
 
-/* return the node with the maximum smaller key in the Tree */
+/* return the key with the maximum smaller value in the Tree */
 int BinarySearchTree::predecessor(int key) {
   Node* pos = this->search(key);
   if(pos == nullptr) {
@@ -132,31 +132,32 @@ int BinarySearchTree::predecessor(int key) {
 }
 
 
-/* return the rightmost in the Tree */
+/* find the rightmost node in the Tree */
 void BinarySearchTree::max() {
   Node* max = this->max(root_);
   std::cout << max->key << " is the maximum key" << std::endl;
 }
 
 
-/* returns the leftmost in the Tree */
+/* find the leftmost node in the Tree */
 void BinarySearchTree::min() {
   Node* min = this->min(root_);
   std::cout << min->key << " is the minimum key" << std::endl;
 }
 
 
+/* print the Tree in in-order */
 void BinarySearchTree::print() {
-  //print(root_, 0);
   print(root_);
 }
 
 
+/* return the number of nodes in the Tree */
 int BinarySearchTree::size() {
   return size_;
 }
 
-
+/* search for a specific key in the Tree */
 void BinarySearchTree::find(int key) {
   Node* root = root_;
   while(root != nullptr and root->key != key) {
@@ -173,6 +174,7 @@ void BinarySearchTree::find(int key) {
 /*------  I N T E R N   O P E R A T I O N S  --------------------------------------------------*/
 
 
+/* intern search to return the node pointer to a key */
 Node* BinarySearchTree::search(int key) {
   Node* tmp = root_;
   bool found = false;
@@ -192,35 +194,39 @@ Node* BinarySearchTree::search(int key) {
 }
 
 
+/* intern procedure to delete a node x from the Tree */
 int BinarySearchTree::remove(Node* node) {
-  Node* deleteNode;
+  Node* x;
   if(node->left == nullptr and node->right == nullptr) {
-    deleteNode = node;
-  } else if(node->left != nullptr) {
-    deleteNode = this->predecessor(node);
-  } else if(node->right != nullptr) {
-    deleteNode = this->successor(node);
-  } Node* deleteNodeChild = nullptr;
-  if(deleteNode->left != nullptr) {
-    deleteNodeChild = deleteNode->left;
-  } else if (deleteNode->right != nullptr) {
-    deleteNodeChild = deleteNode->right;
-  } if(deleteNodeChild != nullptr) {
-    deleteNodeChild->parent = deleteNode->parent;
-  } if(deleteNode->parent == nullptr) {
-    root_ = deleteNodeChild;
-    deleteNodeChild->parent = nullptr;
-  } else if(deleteNode->parent->left == deleteNode) {
-    deleteNode->parent->left = deleteNodeChild;
+    x = node;
+  } else if(node->left != nullptr) {         // if x has only one child 
+    x = this->predecessor(node);             // update its parent pointer
+  } else if(node->right != nullptr) {        // and free the node
+    x = this->successor(node);
+  } Node* x_child = nullptr;
+  if(x->left != nullptr) {                                              
+    x_child = x->left;
+  } else if (x->right != nullptr) {
+    x_child = x->right;
+  } if(x_child != nullptr) {                 // if x has both left and right
+    x_child->parent = x->parent;             // children, find the successor
+  } if(x->parent == nullptr) {               // node that replaces x and 
+    root_ = x_child;                         // update its pointers
+    x_child->parent = nullptr;
+  } else if(x->parent->left == x) {
+    x->parent->left = x_child;
   } else {
-    deleteNode->parent->right = deleteNodeChild;
-  } if(deleteNode != node) {
-    node->key = deleteNode->key;
+    x->parent->right = x_child;
+  } if(x != node) {
+    node->key = x->key;
   } --size_;
   return node->key;
+  delete node;
 }
 
 
+/* intern procedure to return a pointer 
+to the successor node */
 Node* BinarySearchTree::successor(Node* node) {
   if(node->right != nullptr) {
     return min(node->right);
@@ -232,6 +238,8 @@ Node* BinarySearchTree::successor(Node* node) {
 }
 
 
+/* intern procedure to return a 
+pointer to the predecessor node */
 Node* BinarySearchTree::predecessor(Node* node) {
   if(node->left != nullptr) {
     return max(node->left);
@@ -243,6 +251,8 @@ Node* BinarySearchTree::predecessor(Node* node) {
 }
 
 
+/* intern search for the pointer 
+to the rightmost node */
 Node* BinarySearchTree::max(Node* node) {
   while(node->right != nullptr) {
     node = node->right;
@@ -250,6 +260,8 @@ Node* BinarySearchTree::max(Node* node) {
 }
 
 
+/* intern search for the pointer 
+to the leftmost node */
 Node* BinarySearchTree::min(Node* node) {
   while(node->left != nullptr) {
     node = node->left;
@@ -257,6 +269,8 @@ Node* BinarySearchTree::min(Node* node) {
 }
 
 
+/* intern procedure going through the Tree 
+an printing the nodes in in-order */
 void BinarySearchTree::print(Node* node) {
   if(root_ == nullptr || node == nullptr) {
     return;
