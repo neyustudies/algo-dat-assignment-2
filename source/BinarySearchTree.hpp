@@ -11,7 +11,7 @@ class BinarySearchTree {
     BinarySearchTree    (int keys[], int arrSize);
 
     int   insert        (int key);
-    void  remove        (int key);
+    int   remove        (int key);
     int   successor     (int key);
     int   predecessor   (int key);
     int   find          (int key);
@@ -89,12 +89,16 @@ int BinarySearchTree::insert(int key) {
 
 
 /* delete a node from the Tree */
-void BinarySearchTree::remove(int key) {
+int BinarySearchTree::remove(int key) {
   Node* node = this->search(key);
   if(node == nullptr) {
     std::cout << key << " does not exist\n";
+    return 1;
   } this->remove(node);
   std::cout << key << " has been removed\n";
+  std::cout << "The size of the tree now is " 
+            << size() << std::endl;
+  return key;
 }
 
 
