@@ -44,7 +44,6 @@ int main() {
       case 4:     std::cout << "Which node do you want to search?\n";
                   std::cin  >> searched;
                   BST.find(searched);
-                  std::cout << "\n";
                   break;
 
       case 5:     std::cout << "Whose successor are you looking for?\n";
