@@ -71,7 +71,7 @@ int BinarySearchTree::insert(int key) {
         prev = tmp;
         tmp  = tmp->right;
       } else {
-        std::cout << key << " is already existing" << std::endl;
+        std::cout << key << " is already existing\n";
         return 1;
       }
     } if(key < prev->key) {
@@ -110,7 +110,7 @@ int BinarySearchTree::successor(int key) {
     std::cout << "Successor to node " << key << " is " 
               << successorNode->key << std::endl;
   } else {
-    std::cout << key << " has no successor, it is the maximum key" << std::endl;
+    std::cout << key << " has no successor, it is the maximum key\n";
     return key;
   } return key;
 }
@@ -128,7 +128,7 @@ int BinarySearchTree::predecessor(int key) {
     std::cout << "Predecessor to node " << key << " is " 
               << predecessorNode->key << std::endl;
   } else {
-    std::cout << key << " has no predecessor, it is the minimum key" << std::endl;
+    std::cout << key << " has no predecessor, it is the minimum key\n";
     return key;
   } return key;
 }
@@ -137,14 +137,14 @@ int BinarySearchTree::predecessor(int key) {
 /* find the rightmost node in the Tree */
 void BinarySearchTree::max() {
   Node* max = this->max(root_);
-  std::cout << max->key << " is the maximum key" << std::endl;
+  std::cout << max->key << " is the maximum key\n";
 }
 
 
 /* find the leftmost node in the Tree */
 void BinarySearchTree::min() {
   Node* min = this->min(root_);
-  std::cout << min->key << " is the minimum key" << std::endl;
+  std::cout << min->key << " is the minimum key\n";
 }
 
 
@@ -168,7 +168,9 @@ void BinarySearchTree::find(int key) {
     } else {
       root = root->right;
     }
-  } std::cout << "Key " << root->key << " has been found, its address is " << root << std::endl;
+  } std::cout << "Key " << root->key 
+              << " has been found, its address is " 
+              << root << std::endl;
 }
 
 
