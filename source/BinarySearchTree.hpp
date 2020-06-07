@@ -16,8 +16,8 @@ class BinarySearchTree {
     int   predecessor   (int key);
     int   find          (int key);
     int   size          ();
-    void  max           ();
-    void  min           ();
+    int   max           ();
+    int   min           ();
     void  print         ();
 
 
@@ -94,11 +94,14 @@ int BinarySearchTree::remove(int key) {
   if(node == nullptr) {
     std::cout << key << " does not exist\n";
     return 1;
+  } if(size_ == 1) {
+    std::cout << key << " cannot be removed, it is the last key\n";
+    return 1;
   } this->remove(node);
-  std::cout << key << " has been removed\n";
-  std::cout << "The size of the tree now is " 
-            << size() << std::endl;
-  return key;
+    std::cout << key << " has been removed\n";
+    std::cout << "The size of the tree now is " 
+              << size() << std::endl;
+    return key;
 }
 
 
@@ -139,22 +142,32 @@ int BinarySearchTree::predecessor(int key) {
 
 
 /* find the rightmost node in the Tree */
-void BinarySearchTree::max() {
-  Node* max = this->max(root_);
-  std::cout << max->key << " is the maximum key\n";
+int BinarySearchTree::max() {
+  if(size_ == 0) {
+    std::cout << "tree seems to be empty\n";
+    return 1;
+  } Node* max = this->max(root_);
+    std::cout << max->key << " is the maximum key\n";
+    return max->key;
 }
 
 
 /* find the leftmost node in the Tree */
-void BinarySearchTree::min() {
-  Node* min = this->min(root_);
-  std::cout << min->key << " is the minimum key\n";
+int BinarySearchTree::min() {
+  if(size_ == 0) {
+    std::cout << "tree seems to be empty\n";
+    return 1;
+  } Node* min = this->min(root_);
+    std::cout << min->key << " is the minimum key\n";
+    return min->key;
 }
 
 
 /* print the Tree in in-order */
 void BinarySearchTree::print() {
-  print(root_);
+  if(size_ == 0) {
+    std::cout << "tree seems to be empty";
+  } print(root_);
 }
 
 
