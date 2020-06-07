@@ -194,7 +194,7 @@ Node* BinarySearchTree::search(int key) {
 }
 
 
-/* intern procedure to delete a node x from the Tree */
+/* intern procedure to delete node x from the Tree */
 int BinarySearchTree::remove(Node* node) {
   Node* x;
   if(node->left == nullptr and node->right == nullptr) {
@@ -270,7 +270,7 @@ Node* BinarySearchTree::min(Node* node) {
 
 
 /* intern procedure going through the Tree 
-an printing the nodes in in-order */
+and printing the nodes in in-order */
 void BinarySearchTree::print(Node* node) {
   if(root_ == nullptr || node == nullptr) {
     return;
