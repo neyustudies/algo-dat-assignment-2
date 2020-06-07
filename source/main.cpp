@@ -11,7 +11,7 @@ int main() {
 
 
   while(!quit) {
-    std::cout << "\nSelect an action: \n"
+    std::cout << "\n▶︎ Select an action: \n"
               << "1. INSERT, 2. REMOVE, 3. PRINT, 4. FIND, 5. SUCC, 6. PRED, 7. MAX, 8. MIN, 9. QUIT\n";
     std::cin  >> option;
     std::cout << "\nOption " << option << " selected: ";
@@ -22,13 +22,12 @@ int main() {
 
       case 1:     std::cout << "Enter the keys to be inserted, seperated by spaces\n"
                             << "To terminate the input, press any alphabet [Enter]\n";
-                  while(std::cin >> input) {
-                    BST.insert(input);
-                  } std::cin.clear();
-                    std::cin.ignore(1);
-                    std::cout << "The size of the tree now is " << BST.size();
-                    std::cout << "\n";
-                    break;
+                  while(std::cin >> input) {BST.insert(input);} 
+                  std::cin.clear();
+                  std::cin.ignore(1);
+                  std::cout << "The size of the tree now is " << BST.size();
+                  std::cout << "\n";
+                  break;
 
       case 2:     std::cout << "Which node do you want to remove?\n";
                   std::cin  >> removed;
@@ -70,6 +69,7 @@ int main() {
 
 
       default:    quit = true;
+
     }
 
   } return 0;
