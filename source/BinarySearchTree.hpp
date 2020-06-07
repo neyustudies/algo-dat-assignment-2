@@ -14,7 +14,7 @@ class BinarySearchTree {
     void  remove        (int key);
     int   successor     (int key);
     int   predecessor   (int key);
-    void  find          (int key);
+    int   find          (int key);
     int   size          ();
     void  max           ();
     void  min           ();
@@ -92,7 +92,7 @@ int BinarySearchTree::insert(int key) {
 void BinarySearchTree::remove(int key) {
   Node* node = this->search(key);
   if(node == nullptr) {
-    std::cout << "not found" << std::endl;
+    std::cout << key << " does not exist\n";
   } this->remove(node);
   std::cout << key << " has been removed\n";
 }
@@ -103,7 +103,7 @@ with the minimum bigger value in the Tree */
 int BinarySearchTree::successor(int key) {
   Node* pos = this->search(key);
   if(pos == nullptr) {
-    std::cout << "not found" << std::endl;
+    std::cout << key << " does not exist\n";
     return 1;
   } Node* successorNode = this->successor(pos);
   if(successorNode != nullptr) {
@@ -121,7 +121,7 @@ with the maximum smaller value in the Tree */
 int BinarySearchTree::predecessor(int key) {
   Node* pos = this->search(key);
   if(pos == nullptr) {
-    std::cout << "not found" << std::endl;
+    std::cout << key << " does not exist\n";
     return 1;
   } Node* predecessorNode = this->predecessor(pos);
   if(predecessorNode != nullptr) {
@@ -161,8 +161,12 @@ int BinarySearchTree::size() {
 
 
 /* search for a specific key in the Tree */
-void BinarySearchTree::find(int key) {
-  Node* ptr = root_;
+int BinarySearchTree::find(int key) {
+  Node* pos = this->search(key);
+  if(pos == nullptr) {
+    std::cout << key << " does not exist\n";
+    return 1;
+  } Node* ptr = root_;
   while(ptr != nullptr and ptr->key != key) {
     if(key < ptr->key) {
       ptr = ptr->left;
@@ -172,6 +176,7 @@ void BinarySearchTree::find(int key) {
   } std::cout << "Key " << ptr->key 
               << " has been found, its address is " 
               << ptr << std::endl;
+              return key;
 }
 
 
