@@ -98,7 +98,8 @@ void BinarySearchTree::remove(int key) {
 }
 
 
-/* return the key with the minimum bigger value in the Tree */
+/* return the key 
+with the minimum bigger value in the Tree */
 int BinarySearchTree::successor(int key) {
   Node* pos = this->search(key);
   if(pos == nullptr) {
@@ -115,7 +116,8 @@ int BinarySearchTree::successor(int key) {
 }
 
 
-/* return the key with the maximum smaller value in the Tree */
+/* return the key 
+with the maximum smaller value in the Tree */
 int BinarySearchTree::predecessor(int key) {
   Node* pos = this->search(key);
   if(pos == nullptr) {
@@ -174,7 +176,8 @@ void BinarySearchTree::find(int key) {
 /*------  I N T E R N   O P E R A T I O N S  --------------------------------------------------*/
 
 
-/* intern search to return the node pointer to a key */
+/* intern search 
+to return the node pointer to a key */
 Node* BinarySearchTree::search(int key) {
   Node* tmp = root_;
   bool found = false;
@@ -194,7 +197,8 @@ Node* BinarySearchTree::search(int key) {
 }
 
 
-/* intern procedure to delete node x from the Tree */
+/* intern procedure 
+to delete node x from the Tree */
 int BinarySearchTree::remove(Node* node) {
   Node* x;
   if(node->left == nullptr and node->right == nullptr) {
@@ -225,8 +229,8 @@ int BinarySearchTree::remove(Node* node) {
 }
 
 
-/* intern procedure to return a pointer 
-to the successor node */
+/* intern procedure to return a 
+pointer to the successor node */
 Node* BinarySearchTree::successor(Node* node) {
   if(node->right != nullptr) {
     return min(node->right);
@@ -251,8 +255,8 @@ Node* BinarySearchTree::predecessor(Node* node) {
 }
 
 
-/* intern search for the pointer 
-to the rightmost node */
+/* intern search for the 
+pointer to the rightmost node */
 Node* BinarySearchTree::max(Node* node) {
   while(node->right != nullptr) {
     node = node->right;
@@ -260,8 +264,8 @@ Node* BinarySearchTree::max(Node* node) {
 }
 
 
-/* intern search for the pointer 
-to the leftmost node */
+/* intern search for the
+pointer to the leftmost node */
 Node* BinarySearchTree::min(Node* node) {
   while(node->left != nullptr) {
     node = node->left;
@@ -269,8 +273,8 @@ Node* BinarySearchTree::min(Node* node) {
 }
 
 
-/* intern procedure going through the Tree 
-and printing the nodes in in-order */
+/* intern procedure going through the 
+Tree and printing the nodes in in-order */
 void BinarySearchTree::print(Node* node) {
   if(root_ == nullptr || node == nullptr) {
     return;
