@@ -32,8 +32,6 @@ int main() {
       case 2:     std::cout << "Which node do you want to remove?\n";
                   std::cin  >> removed;
                   BST.remove(removed);
-                  std::cout << "The size of the tree now is " << BST.size();
-                  std::cout << "\n";
                   break;
 
       case 3:     std::cout << "Printing the tree in in-order\n";
