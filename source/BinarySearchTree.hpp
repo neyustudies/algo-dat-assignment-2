@@ -159,18 +159,19 @@ int BinarySearchTree::size() {
   return size_;
 }
 
+
 /* search for a specific key in the Tree */
 void BinarySearchTree::find(int key) {
-  Node* root = root_;
-  while(root != nullptr and root->key != key) {
-    if(key < root->key) {
-      root = root->left;
+  Node* ptr = root_;
+  while(ptr != nullptr and ptr->key != key) {
+    if(key < ptr->key) {
+      ptr = ptr->left;
     } else {
-      root = root->right;
+      ptr = ptr->right;
     }
-  } std::cout << "Key " << root->key 
+  } std::cout << "Key " << ptr->key 
               << " has been found, its address is " 
-              << root << std::endl;
+              << ptr << std::endl;
 }
 
 
