@@ -91,10 +91,13 @@ int BinarySearchTree::insert(int key) {
 /* delete a node from the Tree */
 int BinarySearchTree::remove(int key) {
   Node* node = search(key);
-  if(node == nullptr) {
+  if(size_ == 0) {
+    std::cout << "tree is empty\n";
+    return 1;
+  } else if(node == nullptr) {
     std::cout << key << " does not exist\n";
     return 1;
-  } if(size_ == 1) {
+  } else if(size_ == 1) {
     std::cout << key << " cannot be removed, it is the root\n";
     return 1;
   } remove(node);
@@ -109,7 +112,13 @@ int BinarySearchTree::remove(int key) {
 with the minimum bigger value in the Tree */
 int BinarySearchTree::successor(int key) const {
   Node* pos = search(key);
-  if(pos == nullptr) {
+  if(size_ == 0) {
+    std::cout << "tree seems to be empty\n";
+    return 1;
+  } else if(size_ == 1) {
+    std::cout << key << " is the only node\n";
+    return 1;
+  } else if(pos == nullptr) {
     std::cout << key << " does not exist\n";
     return 1;
   } Node* successorNode = successor(pos);
@@ -127,7 +136,13 @@ int BinarySearchTree::successor(int key) const {
 with the maximum smaller value in the Tree */
 int BinarySearchTree::predecessor(int key) const {
   Node* pos = search(key);
-  if(pos == nullptr) {
+  if(size_ == 0) {
+    std::cout << "tree seems to be empty\n";
+    return 1;
+  } else if(size_ == 1) {
+    std::cout << key << " is the only node\n";
+    return 1;
+  } else if(pos == nullptr) {
     std::cout << key << " does not exist\n";
     return 1;
   } Node* predecessorNode = predecessor(pos);
@@ -146,6 +161,9 @@ int BinarySearchTree::max() const {
   if(size_ == 0) {
     std::cout << "tree seems to be empty\n";
     return 1;
+  } else if(size_ == 1) {
+    std::cout << "there is just the root\n";
+    return 1;
   } Node* maxNode = max(root_);
     std::cout << maxNode->value << " is the maximum key\n";
     return maxNode->value;
@@ -156,6 +174,9 @@ int BinarySearchTree::max() const {
 int BinarySearchTree::min() const {
   if(size_ == 0) {
     std::cout << "tree seems to be empty\n";
+    return 1;
+  } else if(size_ == 1) {
+    std::cout << "there is just the root\n";
     return 1;
   } Node* minNode = min(root_);
     std::cout << minNode->value << " is the minimum key\n";
