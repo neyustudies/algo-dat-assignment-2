@@ -23,10 +23,10 @@ struct Node {
   
   Node(int key) {
 
-    value       = key;
-    left        = nullptr;
-    right       = nullptr;
-    parent      = nullptr;
+    value      = key;
+    left       = nullptr;
+    right      = nullptr;
+    parent     = nullptr;
 
   }
 
