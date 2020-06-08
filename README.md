@@ -1,5 +1,6 @@
 # Binary Search Tree C++
 
+
 ### Sample output: insert
 
 ```
@@ -99,3 +100,5 @@ Option 8 selected: Searching for the leftmost key..
 
 Option 9 selected: Goodbye! Exiting the program
 ```
+
+![](images/binarytree2.jpg)
