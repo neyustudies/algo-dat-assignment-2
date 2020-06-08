@@ -23,7 +23,7 @@ struct Node {
   
   Node(int key) {
 
-    this->value = key;
+    value       = key;
     left        = nullptr;
     right       = nullptr;
     parent      = nullptr;
