@@ -47,7 +47,7 @@ BinarySearchTree::BinarySearchTree(int keys[], int arrSize) :
   root_ {nullptr},
   size_ {0} {
     for(auto i = 0; i < arrSize; ++i) {
-      this->insert(keys[i]);
+      insert(keys[i]);
     }
   }
 
@@ -64,21 +64,21 @@ int BinarySearchTree::insert(int key) {
     Node* tmp  = root_;
     Node* prev = nullptr;
     while(tmp != nullptr) {
-      if(key < tmp->key) {
+      if(key < tmp->value) {
         prev = tmp;
         tmp  = tmp->left;
-      } else if(key > tmp->key) {
+      } else if(key > tmp->value) {
         prev = tmp;
         tmp  = tmp->right;
       } else {
         std::cout << key << " is already existing\n";
         return 1;
       }
-    } if(key < prev->key) {
+    } if(key < prev->value) {
       Node* newNode   = new Node(key);
       prev->left      = newNode;
       newNode->parent = prev;
-    } else if(key > prev->key) {
+    } else if(key > prev->value) {
       Node* newNode   = new Node(key);
       prev->right     = newNode;
       newNode->parent = prev;
@@ -90,14 +90,14 @@ int BinarySearchTree::insert(int key) {
 
 /* delete a node from the Tree */
 int BinarySearchTree::remove(int key) {
-  Node* node = this->search(key);
+  Node* node = search(key);
   if(node == nullptr) {
     std::cout << key << " does not exist\n";
     return 1;
   } if(size_ == 1) {
     std::cout << key << " cannot be removed, it is the root\n";
     return 1;
-  } this->remove(node);
+  } remove(node);
     std::cout << key << " has been removed\n";
     std::cout << "The size of the tree now is " 
               << size() << std::endl;
@@ -108,14 +108,14 @@ int BinarySearchTree::remove(int key) {
 /* return the key 
 with the minimum bigger value in the Tree */
 int BinarySearchTree::successor(int key) {
-  Node* pos = this->search(key);
+  Node* pos = search(key);
   if(pos == nullptr) {
     std::cout << key << " does not exist\n";
     return 1;
-  } Node* successorNode = this->successor(pos);
+  } Node* successorNode = successor(pos);
   if(successorNode != nullptr) {
     std::cout << "Successor to node " << key << " is " 
-              << successorNode->key << std::endl;
+              << successorNode->value << std::endl;
   } else {
     std::cout << key << " has no successor, it is the maximum key\n";
     return key;
@@ -126,14 +126,14 @@ int BinarySearchTree::successor(int key) {
 /* return the key 
 with the maximum smaller value in the Tree */
 int BinarySearchTree::predecessor(int key) {
-  Node* pos = this->search(key);
+  Node* pos = search(key);
   if(pos == nullptr) {
     std::cout << key << " does not exist\n";
     return 1;
-  } Node* predecessorNode = this->predecessor(pos);
+  } Node* predecessorNode = predecessor(pos);
   if(predecessorNode != nullptr) {
     std::cout << "Predecessor to node " << key << " is " 
-              << predecessorNode->key << std::endl;
+              << predecessorNode->value << std::endl;
   } else {
     std::cout << key << " has no predecessor, it is the minimum key\n";
     return key;
@@ -146,9 +146,9 @@ int BinarySearchTree::max() {
   if(size_ == 0) {
     std::cout << "tree seems to be empty\n";
     return 1;
-  } Node* max = this->max(root_);
-    std::cout << max->key << " is the maximum key\n";
-    return max->key;
+  } Node* maxNode = max(root_);
+    std::cout << maxNode->value << " is the maximum key\n";
+    return maxNode->value;
 }
 
 
@@ -157,9 +157,9 @@ int BinarySearchTree::min() {
   if(size_ == 0) {
     std::cout << "tree seems to be empty\n";
     return 1;
-  } Node* min = this->min(root_);
-    std::cout << min->key << " is the minimum key\n";
-    return min->key;
+  } Node* minNode = min(root_);
+    std::cout << minNode->value << " is the minimum key\n";
+    return minNode->value;
 }
 
 
@@ -179,18 +179,18 @@ int BinarySearchTree::size() {
 
 /* search for a specific key in the Tree */
 int BinarySearchTree::find(int key) {
-  Node* pos = this->search(key);
+  Node* pos = search(key);
   if(pos == nullptr) {
     std::cout << key << " does not exist\n";
     return 1;
   } Node* ptr = root_;
-  while(ptr != nullptr and ptr->key != key) {
-    if(key < ptr->key) {
+  while(ptr != nullptr and ptr->value != key) {
+    if(key < ptr->value) {
       ptr = ptr->left;
     } else {
       ptr = ptr->right;
     }
-  } std::cout << "Key " << ptr->key 
+  } std::cout << "Key " << ptr->value 
               << " has been found, its address is " 
               << ptr << std::endl;
               return key;
@@ -207,9 +207,9 @@ Node* BinarySearchTree::search(int key) {
   Node* tmp = root_;
   bool found = false;
   while(tmp != nullptr and found == false) {
-    if(tmp->key == key) {
+    if(tmp->value == key) {
       found = true;
-    } else if(tmp->key > key) {
+    } else if(tmp->value > key) {
       tmp = tmp->left;
     } else {
       tmp = tmp-> right;
@@ -229,9 +229,9 @@ int BinarySearchTree::remove(Node* node) {
   if(node->left == nullptr and node->right == nullptr) {
     x = node;
   } else if(node->left != nullptr) {         // if x has only one child 
-    x = this->predecessor(node);             // update its parent pointer
+    x = predecessor(node);                   // update its parent pointer
   } else if(node->right != nullptr) {        // and free the node
-    x = this->successor(node);
+    x = successor(node);
   } Node* x_child = nullptr;
   if(x->left != nullptr) {                                              
     x_child = x->left;
@@ -247,9 +247,9 @@ int BinarySearchTree::remove(Node* node) {
   } else {
     x->parent->right = x_child;
   } if(x != node) {
-    node->key = x->key;
+    node->value = x->value;
   } --size_;
-  return node->key;
+  return node->value;
   delete node;
 }
 
@@ -304,7 +304,7 @@ void BinarySearchTree::print(Node* node) {
   if(root_ == nullptr || node == nullptr) {
     return;
   } print(node->left);
-  std::cout << node->key << "  ";
+  std::cout << node->value << "  ";
   print(node->right);
 }
 
