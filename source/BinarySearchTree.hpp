@@ -95,7 +95,7 @@ int BinarySearchTree::remove(int key) {
     std::cout << key << " does not exist\n";
     return 1;
   } if(size_ == 1) {
-    std::cout << key << " cannot be removed, it is the last key\n";
+    std::cout << key << " cannot be removed, it is the root\n";
     return 1;
   } this->remove(node);
     std::cout << key << " has been removed\n";
